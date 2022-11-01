@@ -1,31 +1,26 @@
-import plotly.express as px
-import plotly.graph_objects as go
-import pandas as pd
-import dash
-from dash import dcc
-from dash import html
-from dash import Input
-from dash import Output
-import dash_bootstrap_components as dbc
-from dash_bootstrap_templates import load_figure_template
-from flask import Flask
+from dash import Dash, dcc, html, Input, Output
+import os
 
 
-server = Flask(__name__)
-app = dash.Dash(
-    __name__,
-    server=server,
-    url_base_pathname='/dash/'
-)
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-fig = go.Figure(data=[go.Scatter(x=[1, 2, 3], y=[4, 1, 2])])
-app.layout = html.Div([dcc.Graph(figure=fig)])
+app = Dash(__name__, external_stylesheets=external_stylesheets)
 
+server = app.server
 
+app.layout = html.Div([
+    html.H2('Hello World'),
+    dcc.Dropdown(['LA', 'NYC', 'MTL'],
+        'LA',
+        id='dropdown'
+    ),
+    html.Div(id='display-value')
+])
 
-@server.route("/dash")
-def my_dash_app():
-    return app.index()
+@app.callback(Output('display-value', 'children'),
+                [Input('dropdown', 'value')])
+def display_value(value):
+    return f'You have selected {value}'
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run_server(debug=True)
