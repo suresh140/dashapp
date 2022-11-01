@@ -13,12 +13,7 @@ fig = go.Figure(data=[go.Scatter(x=[1, 2, 3], y=[4, 1, 2])])
 
 app.layout = html.Div([
     html.H2('Hello World'),
-    dcc.Dropdown(['LA', 'NYC', 'MTL'],
-        'LA',
-        id='dropdown'
-    ),
-    html.Div(id='display-value'),
-    html.Div([dcc.Graph(figure=fig)])
+    dcc.Graph(figure=fig)
 ])
 
 @app.callback(Output('display-value', 'children'),
