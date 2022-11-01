@@ -1,36 +1,23 @@
-import dash
-from dash import dcc
-from dash import html
-from dash import Input
-from dash import Output
 
-import plotly.express as px
-import pandas as pd
-
-app = Dash(__name__)
-
-# assume you have a "long-form" data frame
-# see https://plotly.com/python/px-arguments/ for more options
-df = pd.DataFrame({
-    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
-    "Amount": [4, 1, 2, 2, 4, 5],
-    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
-})
-
-fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
-
-app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
-
-    html.Div(children='''
-        Dash: A web application framework for your data.
-    '''),
-
-    dcc.Graph(
-        id='example-graph',
-        figure=fig
-    )
-])
-
+# Importing flask module in the project is mandatory
+# An object of Flask class is our WSGI application.
+from flask import Flask
+ 
+# Flask constructor takes the name of
+# current module (__name__) as argument.
+app = Flask(__name__)
+ 
+# The route() function of the Flask class is a decorator,
+# which tells the application which URL should call
+# the associated function.
+@app.route('/')
+# ‘/’ URL is bound with hello_world() function.
+def hello_world():
+    return 'Hello World'
+ 
+# main driver function
 if __name__ == '__main__':
-    app.run_server(debug=True)
+ 
+    # run() method of Flask class runs the application
+    # on the local development server.
+    app.run()
