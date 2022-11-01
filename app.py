@@ -19,7 +19,7 @@ fig.update_layout(legend=dict(title_text = "Churn Dashboard", yanchor='top',y=1.
 
 
 app.layout = html.Div([
-    html.H2('Hello World'),
+    html.H2('Welcome to Analytics BOT'),
     dcc.Dropdown(['LA','NYV','MTL'],'LA', id= 'dropdown'),
     html.Div(id='display-value'),
     dcc.Graph(figure=fig)
