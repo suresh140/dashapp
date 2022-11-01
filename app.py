@@ -13,6 +13,10 @@ app = dash.Dash(
 
 app.layout = html.Div(id='dash-container')
 
+@server.route("/")
+def my_home():
+    return "Hello"
+
 
 @server.route("/dash")
 def my_dash_app():
