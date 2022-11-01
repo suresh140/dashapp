@@ -1,4 +1,3 @@
-python==3.8.0
 Flask>=1.0.4
 Dash==2.6.0
 Jinja2==3.1.1
