@@ -1,6 +1,6 @@
 Flask==0.10.0
 Dash==2.6.0
-Jinja2==2.6
+Jinja2==3.1.1
 Werkzeug==0.8.3
 certifi==1.0.1
 distribute==0.6.24
